@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
+// import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import { items } from './items';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +27,10 @@ export class AppComponent {
     });
 
     this.user = this.afAuth.authState;
+
+    // items.forEach(console.log);
+    const storageRef = firebase.storage().ref();
+    console.log(storageRef);
   }
 
   login() {
